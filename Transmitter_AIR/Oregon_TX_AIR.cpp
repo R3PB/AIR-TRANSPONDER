@@ -2,77 +2,9 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // This Arduino code is for receive and transmit data using Oregon Scientific RF protocol version 2.1 and 3.0. 
-//
-// Last updated: 14 October 2019
-//
-// The folowed sensors data format are supported.
-//
-// Receive and transmit:
-// THGN132N (THGR122N, THGN123N),
-// RTGN318,
-// THGR810.
-
-// Receive only:
-// THN132N,
-// WGR800,	
-// UVN800.
-//
-// Aslo supported self-developed sensors. Please contact author for additional infromation.
-//
-// This file is part of the Arduino OREGON_NR library.
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// The MIT License (MIT)
-//
-// Copyright (c) 2019 Sergey Zawislak 
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-// IN THE SOFTWARE.
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// Äàííàÿ áèáëèîòåêà Àðäóèíî ïðåäíàçíà÷åíà äëÿ ïðèåìà è ïåðåäà÷è äàííûõ â ôîðìàòå áåñïðîâîäíîãî ïðîòîêîëà Oregon Scientific v2.1 è v3.0
-//
-// Ïîñëåäíåå îáíîâëåíèå 14 Îêòÿáðÿ 2019
-//
-// Ïîääåðæèâàåòñÿ ôîðìàò ñëåäóþùèõ äàò÷èêîâ
-//
-// Ïðè¸ì è ïåðåäà÷à:
-// THGN132N (THGR122N, THGN123N),
-// RTGN318,
-// THGR810.
-
-// Òîëüîê ïðè¸ì:
-// THN132N,
-// WGR800,	
-// UVN800.
-//
-// Òàêæå ïîääåðæèâàþòñÿ äàò÷èêè ñîáñòâåííîé ðàçðàáîòêè (çà äîïîëíèòåëüíîé äîêóìåíòàöåé îáðàùàòüñÿ ê àâòîðó)
-//
-//  Ýòîò ôàéë - ÷àñòü áèáëèîòåêè OREGON_NR
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// Copyright (c) 2019 Ñåðãåé Çàâèñëÿê
-//
-// Äàííàÿ ëèöåíçèÿ ðàçðåøàåò ëèöàì, ïîëó÷èâøèì êîïèþ äàííîãî ïðîãðàììíîãî îáåñïå÷åíèÿ è ñîïóòñòâóþùåé äîêóìåíòàöèè 
-// (â äàëüíåéøåì èìåíóåìûìè «Ïðîãðàììíîå Îáåñïå÷åíèå»), áåçâîçìåçäíî èñïîëüçîâàòü Ïðîãðàììíîå Îáåñïå÷åíèå áåç îãðàíè÷åíèé,
-// âêëþ÷àÿ íåîãðàíè÷åííîå ïðàâî íà èñïîëüçîâàíèå, êîïèðîâàíèå, èçìåíåíèå, ñëèÿíèå, ïóáëèêàöèþ, ðàñïðîñòðàíåíèå, ñóáëèöåíçèðîâàíèå
-// è/èëè ïðîäàæó êîïèé Ïðîãðàììíîãî Îáåñïå÷åíèÿ, à òàêæå ëèöàì, êîòîðûì ïðåäîñòàâëÿåòñÿ äàííîå Ïðîãðàììíîå Îáåñïå÷åíèå, ïðè ñîáëþäåíèè ñëåäóþùèõ óñëîâèé:
-//
-// Óêàçàííîå âûøå óâåäîìëåíèå îá àâòîðñêîì ïðàâå è äàííûå óñëîâèÿ äîëæíû áûòü âêëþ÷åíû âî âñå êîïèè èëè çíà÷èìûå ÷àñòè äàííîãî Ïðîãðàììíîãî Îáåñïå÷åíèÿ.
-//
-// ÄÀÍÍÎÅ ÏÐÎÃÐÀÌÌÍÎÅ ÎÁÅÑÏÅ×ÅÍÈÅ ÏÐÅÄÎÑÒÀÂËßÅÒÑß «ÊÀÊ ÅÑÒÜ», ÁÅÇ ÊÀÊÈÕ-ËÈÁÎ ÃÀÐÀÍÒÈÉ, ßÂÍÎ ÂÛÐÀÆÅÍÍÛÕ ÈËÈ ÏÎÄÐÀÇÓÌÅÂÀÅÌÛÕ, ÂÊËÞ×Àß ÃÀÐÀÍÒÈÈ ÒÎÂÀÐÍÎÉ 
-// ÏÐÈÃÎÄÍÎÑÒÈ, ÑÎÎÒÂÅÒÑÒÂÈß ÏÎ ÅÃÎ ÊÎÍÊÐÅÒÍÎÌÓ ÍÀÇÍÀ×ÅÍÈÞ È ÎÒÑÓÒÑÒÂÈß ÍÀÐÓØÅÍÈÉ, ÍÎ ÍÅ ÎÃÐÀÍÈ×ÈÂÀßÑÜ ÈÌÈ. ÍÈ Â ÊÀÊÎÌ ÑËÓ×ÀÅ ÀÂÒÎÐÛ ÈËÈ ÏÐÀÂÎÎÁËÀÄÀÒÅËÈ 
-// ÍÅ ÍÅÑÓÒ ÎÒÂÅÒÑÒÂÅÍÍÎÑÒÈ ÏÎ ÊÀÊÈÌ-ËÈÁÎ ÈÑÊÀÌ, ÇÀ ÓÙÅÐÁ ÈËÈ ÏÎ ÈÍÛÌ ÒÐÅÁÎÂÀÍÈßÌ, Â ÒÎÌ ×ÈÑËÅ, ÏÐÈ ÄÅÉÑÒÂÈÈ ÊÎÍÒÐÀÊÒÀ, ÄÅËÈÊÒÅ ÈËÈ ÈÍÎÉ ÑÈÒÓÀÖÈÈ, 
-// ÂÎÇÍÈÊØÈÌ ÈÇ-ÇÀ ÈÑÏÎËÜÇÎÂÀÍÈß ÏÐÎÃÐÀÌÌÍÎÃÎ ÎÁÅÑÏÅ×ÅÍÈß ÈËÈ ÈÍÛÕ ÄÅÉÑÒÂÈÉ Ñ ÏÐÎÃÐÀÌÌÍÛÌ ÎÁÅÑÏÅ×ÅÍÈÅÌ. 
+// Thanks to INVANDI!
+// Release by R3PB(mr.Tech)
+// Last modified 13.02.2021
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -389,7 +321,7 @@ void Oregon_TM::calculateAndSetChecksum810()
   SendBuffer[8] += crc & 0x0F;
   SendBuffer[9] += crc & 0xF0;
 }
-//// CALCULATE CHECKSUM AAA ///////////////////////////////////////////////////////////////////////////////////////////////
+//// CALCULATE CHECKSUM AAA mr.Tech /////////////////////////////////////////////////////////////////////////////////////////
 void Oregon_TM::calculateAndSetChecksumAAA()
 {
   
