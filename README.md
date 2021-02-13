@@ -26,10 +26,10 @@
   * Антенна стационарная внешняя с круговой диаграммой. 
   
   Транспондер:
-  <img class="float-right" src="Transmitter_AIR/img/WhatsApp Image 2021-02-12 at 22.47.49.jpeg" alt="AIR_TRANSPONDER отображение на карте" width="250" />
   * GPS модуль GPS NEO-6M-0-001,
   * Кодер данных - Arduino Nano,
   * Трансмиттер. В качестве передатчика используется носимая портативная радиостанция 144/433MHz.
+  <img class="float-right" src="Transmitter_AIR/img/WhatsApp Image 2021-02-12 at 22.47.49.jpeg" alt="AIR_TRANSPONDER FT-11r, coder" width="250" />
 
 Модуляция FSK (FM).
 Подключение кодера/декодера к приёмнику/передатчику простое, с помощью аудиокабеля. Используются штатные разъемы радиостанций.
@@ -40,4 +40,4 @@
 <img src="https://github.com/R3PB/AIR-TRANSPONDER/blob/main/Transmitter_AIR/img/IMG_20200711_192203(1).jpg" alt="AIR_TRANSPONDER отображение на карте" width="250"/>
 
 ## Благодарность
-Отдельное специальное спасибо INVANDI. Начало было положенно благодаря его проекту https://github.com/invandy/Oregon_NR
+Отдельное специальное спасибо INVANDY. Начало было положенно благодаря его проекту https://github.com/invandy/Oregon_NR
