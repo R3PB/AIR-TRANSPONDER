@@ -24,12 +24,13 @@
   * Сервер. Ноутбук с ОС LINUX.
   * Ресивер. В качестве приёмника используется носимая портативная радиостанция 144/433MHz
   * Антенна стационарная внешняя с круговой диаграммой. 
+  <img class="float-right" src="Transmitter_AIR/img/IMG_20200711_192412(1).jpg" alt="AIR_TRANSPONDER BASE, server, decoder" width="350" />
   
   Транспондер:
   * GPS модуль GPS NEO-6M-0-001,
   * Кодер данных - Arduino Nano,
   * Трансмиттер. В качестве передатчика используется носимая портативная радиостанция 144/433MHz.
-  <img class="float-right" src="Transmitter_AIR/img/WhatsApp Image 2021-02-12 at 22.47.49.jpeg" alt="AIR_TRANSPONDER FT-11r, coder" width="250" />
+  <img class="float-right" src="Transmitter_AIR/img/WhatsApp Image 2021-02-12 at 22.47.49.jpeg" alt="AIR_TRANSPONDER FT-11r, coder" width="350" />
 
 
 Модуляция FSK (FM).
