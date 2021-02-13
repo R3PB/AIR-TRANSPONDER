@@ -26,7 +26,7 @@
   * Антенна стационарная внешняя с круговой диаграммой. 
   
   Транспондер:
-  <img src="Transmitter_AIR/img/WhatsApp Image 2021-02-12 at 22.47.49.jpeg" alt="AIR_TRANSPONDER отображение на карте" width="250" style="float:right;" />
+  <img src="Transmitter_AIR/img/WhatsApp Image 2021-02-12 at 22.47.49.jpeg" alt="AIR_TRANSPONDER отображение на карте" width="250" style="max-width:100%;float: right;" />
   * GPS модуль GPS NEO-6M-0-001,
   * Кодер данных - Arduino Nano,
   * Трансмиттер. В качестве передатчика используется носимая портативная радиостанция 144/433MHz.
