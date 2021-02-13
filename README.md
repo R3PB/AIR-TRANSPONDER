@@ -26,7 +26,7 @@
   * Антенна стационарная внешняя с круговой диаграммой. 
   
   Транспондер:
-  <img src="Transmitter_AIR/img/WhatsApp Image 2021-02-12 at 22.47.49.jpeg" alt="AIR_TRANSPONDER отображение на карте" width="250" style="max-width:100%;float: right;" />
+  <img class="img_right" src="Transmitter_AIR/img/WhatsApp Image 2021-02-12 at 22.47.49.jpeg" alt="AIR_TRANSPONDER отображение на карте" width="250" style="max-width:100%;float: right;" />
   * GPS модуль GPS NEO-6M-0-001,
   * Кодер данных - Arduino Nano,
   * Трансмиттер. В качестве передатчика используется носимая портативная радиостанция 144/433MHz.
@@ -41,4 +41,6 @@
 
 ## Благодарность
 Отдельное специальное спасибо INVANDI. Начало было положенно благодаря его проекту https://github.com/invandy/Oregon_NR
-
+<style>
+.img_right{float:right;}
+</style>
