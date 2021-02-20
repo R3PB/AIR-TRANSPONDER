@@ -35,7 +35,7 @@
   * Ресивер. В качестве приёмника используется носимая портативная радиостанция 144/433MHz
   * Антенна стационарная внешняя с круговой диаграммой 
   * WIFI роутер(для удобства подключения).
-  <img class="float-right" src="Transmitter_AIR/img/IMG_20200711_192412(1).jpg" alt="AIR_TRANSPONDER BASE, server, decoder" width="350" />
+  <img class="float-right" src="Transmitter_AIR/img/IMG_20200711_192412(1).jpg" alt="AIR_TRANSPONDER BASE, server, decoder" width="" />
   
   Транспондер:
   * GPS модуль GPS NEO-6M-0-001,
