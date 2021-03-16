@@ -59,24 +59,8 @@
 //
 // Также поддерживаются датчики собственной разработки (за дополнительной документацей обращаться к автору)
 //
-//  Этот файл - часть библиотеки OREGON_NR
+// Этот файл - часть библиотеки OREGON_NR
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// Copyright (c) 2019 Ñåðãåé Çàâèñëÿê
-//
-// Äàííàÿ ëèöåíçèÿ ðàçðåøàåò ëèöàì, ïîëó÷èâøèì êîïèþ äàííîãî ïðîãðàììíîãî îáåñïå÷åíèÿ è ñîïóòñòâóþùåé äîêóìåíòàöèè 
-// (â äàëüíåéøåì èìåíóåìûìè «Ïðîãðàììíîå Îáåñïå÷åíèå»), áåçâîçìåçäíî èñïîëüçîâàòü Ïðîãðàììíîå Îáåñïå÷åíèå áåç îãðàíè÷åíèé,
-// âêëþ÷àÿ íåîãðàíè÷åííîå ïðàâî íà èñïîëüçîâàíèå, êîïèðîâàíèå, èçìåíåíèå, ñëèÿíèå, ïóáëèêàöèþ, ðàñïðîñòðàíåíèå, ñóáëèöåíçèðîâàíèå
-// è/èëè ïðîäàæó êîïèé Ïðîãðàììíîãî Îáåñïå÷åíèÿ, à òàêæå ëèöàì, êîòîðûì ïðåäîñòàâëÿåòñÿ äàííîå Ïðîãðàììíîå Îáåñïå÷åíèå, ïðè ñîáëþäåíèè ñëåäóþùèõ óñëîâèé:
-//
-// Óêàçàííîå âûøå óâåäîìëåíèå îá àâòîðñêîì ïðàâå è äàííûå óñëîâèÿ äîëæíû áûòü âêëþ÷åíû âî âñå êîïèè èëè çíà÷èìûå ÷àñòè äàííîãî Ïðîãðàììíîãî Îáåñïå÷åíèÿ.
-//
-// ÄÀÍÍÎÅ ÏÐÎÃÐÀÌÌÍÎÅ ÎÁÅÑÏÅ×ÅÍÈÅ ÏÐÅÄÎÑÒÀÂËßÅÒÑß «ÊÀÊ ÅÑÒÜ», ÁÅÇ ÊÀÊÈÕ-ËÈÁÎ ÃÀÐÀÍÒÈÉ, ßÂÍÎ ÂÛÐÀÆÅÍÍÛÕ ÈËÈ ÏÎÄÐÀÇÓÌÅÂÀÅÌÛÕ, ÂÊËÞ×Àß ÃÀÐÀÍÒÈÈ ÒÎÂÀÐÍÎÉ 
-// ÏÐÈÃÎÄÍÎÑÒÈ, ÑÎÎÒÂÅÒÑÒÂÈß ÏÎ ÅÃÎ ÊÎÍÊÐÅÒÍÎÌÓ ÍÀÇÍÀ×ÅÍÈÞ È ÎÒÑÓÒÑÒÂÈß ÍÀÐÓØÅÍÈÉ, ÍÎ ÍÅ ÎÃÐÀÍÈ×ÈÂÀßÑÜ ÈÌÈ. ÍÈ Â ÊÀÊÎÌ ÑËÓ×ÀÅ ÀÂÒÎÐÛ ÈËÈ ÏÐÀÂÎÎÁËÀÄÀÒÅËÈ 
-// ÍÅ ÍÅÑÓÒ ÎÒÂÅÒÑÒÂÅÍÍÎÑÒÈ ÏÎ ÊÀÊÈÌ-ËÈÁÎ ÈÑÊÀÌ, ÇÀ ÓÙÅÐÁ ÈËÈ ÏÎ ÈÍÛÌ ÒÐÅÁÎÂÀÍÈßÌ, Â ÒÎÌ ×ÈÑËÅ, ÏÐÈ ÄÅÉÑÒÂÈÈ ÊÎÍÒÐÀÊÒÀ, ÄÅËÈÊÒÅ ÈËÈ ÈÍÎÉ ÑÈÒÓÀÖÈÈ, 
-// ÂÎÇÍÈÊØÈÌ ÈÇ-ÇÀ ÈÑÏÎËÜÇÎÂÀÍÈß ÏÐÎÃÐÀÌÌÍÎÃÎ ÎÁÅÑÏÅ×ÅÍÈß ÈËÈ ÈÍÛÕ ÄÅÉÑÒÂÈÉ Ñ ÏÐÎÃÐÀÌÌÍÛÌ ÎÁÅÑÏÅ×ÅÍÈÅÌ. 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 #define TR_TIME 488
 #define TWOTR_TIME 976
@@ -87,7 +71,11 @@
 #define THGR810   0xF824
 #define RTGN318   0xDCC3 
 #define THP	    0x5500
-#define AIR     0xAAA               // Префикс - идентификатор пакета, принедлежащего всем транспондерам
+#define AIR4
+// #define AIR     0xAAA               // Префикс - идентификатор пакета, принадлежащего всем транспондерам
+
+
+
 // #define AIR1    0xAAA1
 // #define AIR2    0xAAA2
 // #define AIR3    0xAAA3
@@ -97,15 +85,67 @@
 // #define AIR7    0xAAA7
 // #define AIR8    0xAAA8
 // #define AIR9    0xAAA9
+
 // #define AIRx
-#define AIRx    0xAAA1              // Определяем уникальный номер транспондера AAA0 ... AAA9
-// #define flag_start 0x02
+// #define AIRx    0xAAA3              // Определяем уникальный номер транспондера AAA0 ... AAA9
+#ifdef AIR0
+#define AIRx    0xAAA0
+#define offset_t 100
+#endif
+
+#ifdef AIR1
+#define AIRx    0xAAA1
+#define offset_t 600
+#endif
+
+#ifdef AIR2
+#define AIRx    0xAAA2
+#define offset_t 1100
+#endif
+
+#ifdef AIR3
+#define AIRx    0xAAA3
+#define offset_t 1600
+#endif
+
+#ifdef AIR4
+#define AIRx    0xAAA4
+#define offset_t 2100
+#endif
+
+#ifdef AIR5
+#define AIRx    0xAAA5
+#define offset_t 2600
+#endif
+
+#ifdef AIR6
+#define AIRx    0xAAA6
+#define offset_t 3100
+#endif
+
+#ifdef AIR7
+#define AIRx    0xAAA7
+#define offset_t 3600
+#endif
+
+#ifdef AIR8
+#define AIRx    0xAAA8
+#define offset_t 4100
+#endif
+
+#ifdef AIR9
+#define AIRx    0xAAA9
+#define offset_t 4600
+#endif
 
 static byte TX_PIN = 19;            // установка порта передачи данных (A5)
 static byte PTT_PIN = 18;           // установка порта для PTT (A4)
 static byte TX_LED  = 15;           // индикация передачи порт (A1)
 static byte GPS_LED  = 16;          // индикация приёма GPS (A2)
 static const int buffersize = 10;   // original
+// int offset_t;
+// #define AIRx
+// word AIRx;
 
 class Oregon_TM
 {
@@ -116,8 +156,9 @@ class Oregon_TM
     word sens_type = 0x0000;               
     int timing_corrector2 = 4;
     int timing_corrector3 = 2;
-    bool flag_start = 0;            // флаг синхронизации таймера с нулевой секундой. 31.07.2020
-    int send_time_transponder = 5000;//период передачи транспондера  
+    int send_time_transponder = 4000;//период передачи транспондера 
+    // int offset_t;
+    // word AIRx;
 
     Oregon_TM(byte); 
     Oregon_TM(); 
@@ -129,7 +170,8 @@ class Oregon_TM
     void setTemperature(float);
     void setHumidity(byte);
     void setComfort(float, byte);
-    bool transmit(int, int);
+    bool transmit(int);
+    // bool transmit(int, int);
     void SendPacket();
 
     void setErrorTHP();
@@ -169,8 +211,6 @@ class Oregon_TM
     unsigned long send_time = 0;
     bool prevbit = 1;
     bool prevstate = 1;
-
-
 };
 
 #endif
